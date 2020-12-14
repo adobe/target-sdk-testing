@@ -1,0 +1,17 @@
+.idea
+.vscode
+.nyc_output
+bower_components
+build
+coverage
+checkstyle
+lib
+dist
+node_modules
+npm-debug.log
+.DS_Store
+*.iml
+*.map
+*.tgz
+.npmrc
+
