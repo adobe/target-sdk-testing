@@ -33,7 +33,12 @@ To generate new test artifacts, simply follow these steps.
 1. run `npm install`
 1. run `npm run build`.
 
-These commands generate new and/or updated artifacts in the `test-artifacts` folder.  The generated files need to be committed once generated so they can be used by each Adobe Target SDK.
+These commands generate new and/or updated artifacts in the `schema/artifacts` folder.  The generated files need to be committed once generated so they can be used by each Adobe Target SDK.
 
+## Contributing
 
+Please read the [Contributing Guide](CONTRIBUTING.md) as well as [Code of Conduct](CODE_OF_CONDUCT.md) for more information.
 
+## Licensing
+
+This project is licensed under the Apache V2 License. See [LICENSE](LICENSE) for more information.
