@@ -9,7 +9,7 @@ const prettier = require("prettier");
 
 const TargetDecisioningEngine = require("@adobe/target-decisioning-engine");
 
-const outputFolder = appRoot.resolve("schema/test-artifacts");
+const outputFolder = appRoot.resolve("schema/artifacts");
 
 const REQUIRED_ENV_VARS = ["CLIENT_ID", "IMS_ORG_ID", "ENVIRONMENT"];
 
