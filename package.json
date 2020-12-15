@@ -1,0 +1,33 @@
+{
+  "name": "target-sdk-testing",
+  "version": "1.0.0",
+  "description": "Adobe Target SDK Testing",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "node ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adobe/target-sdk-testing.git"
+  },
+  "keywords": [
+    "Adobe",
+    "Target",
+    "Testing"
+  ],
+  "author": "Adobe Systems Inc.",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/adobe/target-sdk-testing/issues"
+  },
+  "homepage": "https://github.com/adobe/target-sdk-testing#readme",
+  "devDependencies": {
+    "@adobe/target-decisioning-engine": "^1.5.1",
+    "app-root-path": "^3.0.0",
+    "dotenv": "^8.2.0",
+    "fs-extra": "^9.0.1",
+    "node-fetch": "^2.6.1",
+    "prettier": "^2.2.1"
+  }
+}
