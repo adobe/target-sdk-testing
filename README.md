@@ -13,7 +13,6 @@ There are two folders within this repository that are of interest for testing:
 
 ## How to use in an SDK
 
-### Add the test 
 Use git subtree to include the contents of the `schema` folder within the SDK.  That way, when the artifacts or test models are updated, the SDK can receive those updates via a simple command.
 
 ## Test Artifact Data
