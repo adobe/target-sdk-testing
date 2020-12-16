@@ -2,18 +2,18 @@
 
 ## Overview
 
-This repository contains real-world test artifacts along with test models that are used to verify on-device decisioning functionality within each Adobe Target SDK.
+This repository contains real-world test artifacts along with test models that are used to verify on-device decisioning functionality within each Adobe Target SDK ( AKA the "test schema" ).
 
-There are two folders within this repository that are of interest for testing:
+The test schema files reside within the `schema` folder of this repo.  There are two folders inside that will be of interest in testing:
 
 | Folder         | Description                                                                                                                              |
 |----------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | schema/artifacts | Contains a series of json files representing artifacts that are used when testing various on-device decisioning scenarios.               |
-| schema/models    | Contains a series of json files, each one describing a suite of tests to run along with the artifact, config, input and expected output. |
+| schema/models    | Contains a series of json files, each one describing a suite of tests to run along with the artifact, config, input and expected outputs. |
 
 ## How to use in an SDK
 
-In order to use these test files you need to reference the `schema` folder of this repo to the target SDK repo.  This is done via git subtree.  And there is a script for you to use that makes the process very simple.  
+In order to use these test files you need to reference the `schema` folder of this repo within a specific target SDK repo.  This is done via git subtree.  And there is a script for you to use that makes the process very simple.  
 
 ## Setup
 
@@ -21,49 +21,48 @@ Follow these steps to establlish the git subtree for the first time.
 
 1. Download the [updateTestSchema.sh](https://raw.githubusercontent.com/adobe/target-sdk-testing/main/src/updateTestSchema.sh) file from this repo into the target SDK.  
 1. Edit `updateTestSchema.sh` and change the `TEST_SCHEMA_DESTINATION_FOLDER` variable to the path for where you want the `schema` folder to live within the target SDK repo.
-1. Set file permissions for execute: `chmod +x updateTestSchema.sh`
+1. Set file permissions to execute: `chmod +x updateTestSchema.sh`
 1. Execute the script from the repo root folder: `./updateTestSchema.sh`
 
 ## Updating to the latest schema
 
-To update to the latest test schema, simply execute the `updateTestSchema.sh` script.
+To update to the latest test schema, simply execute the `updateTestSchema.sh` script at any time.
 
 ```bash
 ./updateTestSchema.sh
 ```
 
-That's it!  The script makes sure all the test schema files are updated from the `target-sdk-testing` repo and merged to the target SDK repo.
-
 ## Usage
 
+To use the schema, you will need to create a test that reads the test suite files, and dynamically instruments tests based on the definitions.   
 
 ### Read the test suites and hydrate the artifacts
 
 1. When the test begins, it lists the `.json` files within `schema/models`.  Each `TEST_SUITE_XXXXXX.json` file represents a suite of tests to execute.
 1. Each `TEST_SUITE_XXXXXX.json` file is read and parsed.
-1. The json tree within `TEST_SUITE_XXXXXX.json` is traversed, looking for properties named `artifact` with a value that begins with `TEST_ARTIFACT_`.  In every case, the artifact value is then replaced with the json content of the corresponding artifact in the `schema/artifacts` folder.  For example, if `TEST_SUITE_AB_SIMPLE.json` has an `artifact` property set to `TEST_ARTIFACT_AB_SIMPLE`, then the contents of `schema/artifacts/TEST_ARTIFACT_AB_SIMPLE.json` replace the value for `artifact`.
+1. The json tree within `TEST_SUITE_XXXXXX.json` is traversed, looking for properties named `artifact` with a value that begins with `TEST_ARTIFACT_`.  In every case, the artifact value is then replaced with the json content of the corresponding artifact in the `schema/artifacts` folder.  For example, if `schema/models/TEST_SUITE_AB_SIMPLE.json` has an `artifact` property set to `TEST_ARTIFACT_AB_SIMPLE`, then the contents of `schema/artifacts/TEST_ARTIFACT_AB_SIMPLE.json` replaces the value for `artifact`.
 
 ### Run the test suites
-
-To use the schema, you need to write a dynamic test that iterates over the test suites and runs each test using the designated criteria.  To see a working example check out the [Node.js test runner](https://github.com/adobe/target-nodejs-sdk/blob/main/packages/target-decisioning-engine/test/decisioning.spec.js)
-Here's the gist of how it needs to work...
-
 
 For each test suite file...
 
 1. Setup mocks
-   * The request for artifact must be mocked so that the `artifact` specified for the suite is returned when the SDK requests it.  If an `artifact` is specified in the test itself, use it instead.
-  * Mock the geo response if a `mockGeo` object is specified in the test.
-  * Lock the system date to the `mockDate` if one is specified for the test.
+   * The request for the artifact must be mocked so that the `artifact` specified for the suite is returned when the SDK requests it.  If an `artifact` is specified in the test itself, use it instead.
+   * Mock the geo response if a `mockGeo` object is specified in the test.
+   * Lock the system date to the `mockDate` if one is specified for the test.
 1. Initialize the SDK using the `conf` object from the suite.  If a `conf` is specified in the test itself, use it instead.
-1. Make a getOffers call, passing in the `input` object from the test.
+1. Make a `getOffers` call, passing in the `input` object specified in the test.
 1. Validate
-  * Validate the result from the getOffers call contains the keys and values specified in the `output` object.
-  * If `notificationOutput` is specified within the test, validate that a notification was sent and that it contains the keys and values specified in `notificationOutput`.  If `notificationOutput` is null, verify that no notifications were sent.
- 
+   * Validate the result from the `getOffers` call contains the keys and values specified within the `output` object.
+   * If `notificationOutput` is specified within the test, validate that a notification was sent and that it contains the keys and values specified within `notificationOutput`.  If `notificationOutput` is null, verify that no notifications were sent.
+
+To see a working example check out the [Node.js test runner](https://github.com/adobe/target-nodejs-sdk/blob/main/packages/target-decisioning-engine/test/decisioning.spec.js)
 
 ### Test Models
-The `TEST_SUITE_XXXXXX.json` file has the following properties.
+
+#### Suite
+
+The `schema/models/TEST_SUITE_XXXXXX.json` files have the following properties.
 
 | property    | description                                                                                                                                                                                                              |
 |-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -71,6 +70,9 @@ The `TEST_SUITE_XXXXXX.json` file has the following properties.
 | artifact    | A string referencing an artifact file within `schema/artifacts` without the file extension.  This artifact is to be used for each test defined within the suite, unless `artifact` is specified in the test itself. |
 | conf        | An object with configuration values that will be passed into the SDK initialization during the test.                                                                                                                     |
 | test        | An object with key values where the key is a unique idenifier for the test and the value is a json object with additional details for the specific test.                                                                 |
+
+
+#### Test
 
 Each test object may have the following properties.
 
@@ -95,8 +97,9 @@ The test artifacts are generated from a real production artifact.  This artifact
 | organizationId | 65453EA95A70434F0A495D34@AdobeOrg |
 | environment    | production                        |
 
+More details about the specific Target Activities and Properties use for testing can be found [here](https://wiki.corp.adobe.com/display/elm/Local+Decisioning%3A+Test+Artifacts) 
 
-### Generating new test artifacts
+### Generating updated test artifacts
 
 To generate new test artifacts, simply follow these steps.
 
@@ -104,7 +107,7 @@ To generate new test artifacts, simply follow these steps.
 1. run `npm install`
 1. run `npm run build`.
 
-These commands generate new and/or updated artifacts in the `schema/artifacts` folder.  The generated files need to be committed once generated so they can be used by each Adobe Target SDK.
+These commands generate new and/or updated artifacts in the `schema/artifacts` folder.  The generated files need to be committed once generated, so they can be used by each implementing Adobe Target SDK.
 
 ## Contributing
 
