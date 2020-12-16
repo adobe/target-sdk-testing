@@ -13,7 +13,78 @@ There are two folders within this repository that are of interest for testing:
 
 ## How to use in an SDK
 
-Use git subtree to include the contents of the `schema` folder within the SDK.  That way, when the artifacts or test models are updated, the SDK can receive those updates via a simple command.
+In order to use these test files you need to reference the `schema` folder of this repo to the target SDK repo.  This is done via git subtree.  And there is a script for you to use that makes the process very simple.  
+
+## Setup
+
+Follow these steps to establlish the git subtree for the first time.
+
+1. Download the [updateTestSchema.sh](https://raw.githubusercontent.com/adobe/target-sdk-testing/main/src/updateTestSchema.sh) file from this repo into the target SDK.  
+1. Edit `updateTestSchema.sh` and change the `TEST_SCHEMA_DESTINATION_FOLDER` variable to the path for where you want the `schema` folder to live within the target SDK repo.
+1. Set file permissions for execute: `chmod +x updateTestSchema.sh`
+1. Execute the script from the repo root folder: `./updateTestSchema.sh`
+
+## Updating to the latest schema
+
+To update to the latest test schema, simply execute the `updateTestSchema.sh` script.
+
+```bash
+./updateTestSchema.sh
+```
+
+That's it!  The script makes sure all the test schema files are updated from the `target-sdk-testing` repo and merged to the target SDK repo.
+
+## Usage
+
+
+### Read the test suites and hydrate the artifacts
+
+1. When the test begins, it lists the `.json` files within `schema/models`.  Each `TEST_SUITE_XXXXXX.json` file represents a suite of tests to execute.
+1. Each `TEST_SUITE_XXXXXX.json` file is read and parsed.
+1. The json tree within `TEST_SUITE_XXXXXX.json` is traversed, looking for properties named `artifact` with a value that begins with `TEST_ARTIFACT_`.  In every case, the artifact value is then replaced with the json content of the corresponding artifact in the `schema/artifacts` folder.  For example, if `TEST_SUITE_AB_SIMPLE.json` has an `artifact` property set to `TEST_ARTIFACT_AB_SIMPLE`, then the contents of `schema/artifacts/TEST_ARTIFACT_AB_SIMPLE.json` replace the value for `artifact`.
+
+### Run the test suites
+
+To use the schema, you need to write a dynamic test that iterates over the test suites and runs each test using the designated criteria.  To see a working example check out the [Node.js test runner](https://github.com/adobe/target-nodejs-sdk/blob/main/packages/target-decisioning-engine/test/decisioning.spec.js)
+Here's the gist of how it needs to work...
+
+
+For each test suite file...
+
+1. Setup mocks
+   * The request for artifact must be mocked so that the `artifact` specified for the suite is returned when the SDK requests it.  If an `artifact` is specified in the test itself, use it instead.
+  * Mock the geo response if a `mockGeo` object is specified in the test.
+  * Lock the system date to the `mockDate` if one is specified for the test.
+1. Initialize the SDK using the `conf` object from the suite.  If a `conf` is specified in the test itself, use it instead.
+1. Make a getOffers call, passing in the `input` object from the test.
+1. Validate
+  * Validate the result from the getOffers call contains the keys and values specified in the `output` object.
+  * If `notificationOutput` is specified within the test, validate that a notification was sent and that it contains the keys and values specified in `notificationOutput`.  If `notificationOutput` is null, verify that no notifications were sent.
+ 
+
+### Test Models
+The `TEST_SUITE_XXXXXX.json` file has the following properties.
+
+| property    | description                                                                                                                                                                                                              |
+|-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| description | A brief description of the test suite.                                                                                                                                                                                   |
+| artifact    | A string referencing an artifact file within `schema/artifacts` without the file extension.  This artifact is to be used for each test defined within the suite, unless `artifact` is specified in the test itself. |
+| conf        | An object with configuration values that will be passed into the SDK initialization during the test.                                                                                                                     |
+| test        | An object with key values where the key is a unique idenifier for the test and the value is a json object with additional details for the specific test.                                                                 |
+
+Each test object may have the following properties.
+
+| property           | required | description                                                                                                                                                                                                        |
+|--------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| artifact           | NO       | Same as above, but not always specified.  It is used to override the artifact set at the suite level, which is necessary for some tests.                                                                           |
+| conf               | NO       | Same as above, but not always specified.  It is used to override the configuration set at the suite level, which is necessary for some tests.                                                                      |
+| description        | YES      | A brief description of the test.                                                                                                                                                                                   |
+| input              | YES      | An object representing the Target Delivery Request passed in to a getOffers call.                                                                                                                                  |
+| output             | YES      | An object representing the expected Target Delivery Response from a getOffers call.  It specifies properties that must be present and validated.  Some properties are excluded if they are irrelevant to the test. |
+| notificationOutput | NO       | An object representing the expected notification output.  Used to validate notification payloads when making execute requests.  Not always present.                                                                |
+| mockDate           | NO       | An object indicating a specific date to lock the test to (year, month, date, hours).  Used in some tests to override the system date used during runtime.                                                          |
+| mockGeo            | NO       | An object indicating a geo payload as would be received from `/v1/geo`.  If present, the test needs to use it to mock any requests made to that endpoint.                                                          |
+
 
 ## Test Artifact Data
 The test artifacts are generated from a real production artifact.  This artifact belongs to the following test organization.
