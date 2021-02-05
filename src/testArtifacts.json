@@ -5,146 +5,146 @@
   },
   "artifacts": [
     {
-      "activityIds": [333312],
+      "activityIds": [125867],
       "remoteMboxes": [],
       "artifactFilename": "TEST_ARTIFACT_ADDRESS.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/form_based_activity-offer2-feb1920201034"
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/mbox-urlcontains"
       ]
     },
     {
-      "activityIds": [334845],
+      "activityIds": [125871],
       "remoteMboxes": [],
       "artifactFilename": "TEST_ARTIFACT_BROWSER.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/Experience-Targeting/browser-mbox"
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/Experience-Targeting/_unit-test_mbox-browsers"
       ]
     },
     {
-      "activityIds": [334640, 334411],
+      "activityIds": [125872, 125873],
       "remoteMboxes": [],
       "artifactFilename": "TEST_ARTIFACT_AB_MULTI_SIMPLE.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/simple_ab_expendable-mbox",
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/superfluous_ab_json"
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_mbox-salutations",
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_mbox-magician"
       ]
     },
     {
-      "activityIds": [334717],
+      "activityIds": [125874],
       "remoteMboxes": [],
       "artifactFilename": "TEST_ARTIFACT_PARAMS.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/redundant-mbox"
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_mbox-params"
       ]
     },
     {
-      "activityIds": [336973, 336951, 336950],
+      "activityIds": [125875, 125876, 125877],
       "remoteMboxes": [],
       "artifactFilename": "TEST_ARTIFACT_PRIORITIES.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/kitty_low",
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/kitty_high",
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/Experience-Targeting/kitty_high_with_targeting"
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_mbox-prioritizedlow",
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_mbox-prioritizedhigh",
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/Experience-Targeting/_unit-test_mbox-prioritizedhighwithtargeting"
       ]
     },
     {
-      "activityIds": [334411],
+      "activityIds": [125873],
       "remoteMboxes": [],
       "artifactFilename": "TEST_ARTIFACT_AB_SIMPLE.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/superfluous_ab_json"
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_mbox-magician"
       ]
     },
     {
-      "activityIds": [334853],
+      "activityIds": [125879],
       "remoteMboxes": ["remote-only-mbox-a", "remote-only-mbox-a"],
       "artifactFilename": "TEST_ARTIFACT_TIMEFRAME.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/Experience-Targeting/daterange-mbox"
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/Experience-Targeting/_unit-test_mbox-dateranges"
       ]
     },
     {
-      "activityIds": [337795, 337797, 337888],
+      "activityIds": [125880, 125883, 125884],
       "remoteMboxes": ["target-global-mbox"],
       "artifactFilename": "TEST_ARTIFACT_GLOBAL_MBOX.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/Experience-Targeting/global_mbox_browserhtml",
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/ab_tres_experienceglobalmbox",
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/global_ab_html"
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/Experience-Targeting/_unit-test_target-global-mboxbrowsers",
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_target-global-mboxparams",
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_target-global-mboxcreatures"
       ]
     },
     {
-      "activityIds": [335113],
+      "activityIds": [125885],
       "remoteMboxes": ["remote-only-mbox-a", "remote-only-mbox-b"],
       "artifactFilename": "TEST_ARTIFACT_FEATURE_FLAG.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/jason-flags"
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_mbox-feature-flags"
       ]
     },
     {
-      "activityIds": [337795, 334845, 334411, 335113],
-      "remoteMboxes": ["browser-mbox"],
+      "activityIds": [125880, 125871, 125873, 125885],
+      "remoteMboxes": ["mbox-browsers"],
       "artifactFilename": "TEST_ARTIFACT_ATJS.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/Experience-Targeting/global_mbox_browserhtml",
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/Experience-Targeting/browser-mbox",
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/superfluous_ab_json",
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/jason-flags"
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/Experience-Targeting/_unit-test_target-global-mboxbrowsers",
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/Experience-Targeting/_unit-test_mbox-browsers",
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_mbox-magician",
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_mbox-feature-flags"
       ]
     },
     {
-      "activityIds": [350783, 350782, 337795],
+      "activityIds": [125887, 125888, 125880],
       "remoteMboxes": [],
       "artifactFilename": "TEST_ARTIFACT_PROPERTIES.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/vegetable_ab_global-mbox",
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/fruit_ab_global-mbox",
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/Experience-Targeting/global_mbox_browserhtml"
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_target-global-mboxvegetables",
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_target-global-mboxfruits",
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/Experience-Targeting/_unit-test_target-global-mboxbrowsers"
       ]
     },
     {
-      "activityIds": [349133],
+      "activityIds": [125889],
       "remoteMboxes": [],
       "artifactFilename": "TEST_ARTIFACT_GEO.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/greg_geo_test_a_bjun0220201434"
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_mbox-geography"
       ]
     },
     {
-      "activityIds": [345798, 345779, 345782],
+      "activityIds": [125897, 125898, 125900],
       "remoteMboxes": [],
       "artifactFilename": "TEST_ARTIFACT_VIEWS.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/Experience-Targeting/xt_spa_add_text_tocontactpage",
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/ab_spa_view_changemultipletextnoaudiences",
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/ab_spa_view_changeaddtextwithaudiences"
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/Experience-Targeting/_unit-test_vec_spacontactcorrect",
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_vec_spahomeab",
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_vec_spahomeabtargeting"
       ]
     },
     {
-      "activityIds": [345717],
+      "activityIds": [125901],
       "remoteMboxes": [],
       "artifactFilename": "TEST_ARTIFACT_PAGELOAD_VEC_XT.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/Experience-Targeting/xt_vec_non-spa_correctparamslocal-target-test"
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/Experience-Targeting/_unit-test_vec_pageloadxtcustom"
       ]
     },
     {
-      "activityIds": [344512, 345139],
+      "activityIds": [125902, 125903],
       "remoteMboxes": [],
       "artifactFilename": "TEST_ARTIFACT_PAGELOAD_VEC_AB.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/ab_add_text_local-target-test",
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/ab_non-spa_local-target-test"
+       "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_vec_pageloadabquote",
+       "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_vec_pageloadabtargeting"
       ]
     },
     {
-      "activityIds": [362147, 362225, 362237],
+      "activityIds": [125891, 125894, 125895],
       "remoteMboxes": [],
       "artifactFilename": "TEST_ARTIFACT_CAMPAIGN_MACROS.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/campaign_macros",
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/macros_pageload",
-        "https://experience.adobe.com/#/@adobesummit2018/target/activities/activitydetails/A-B/campaign_macros_view"
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_mbox-macros",
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_vec_pageloadmacros",
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_vec_viewmacros"
       ]
     }
   ]
