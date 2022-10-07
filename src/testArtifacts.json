@@ -5,11 +5,12 @@
   },
   "artifacts": [
     {
-      "activityIds": [125867],
+      "activityIds": [125867, 147437, 147438],
       "remoteMboxes": [],
       "artifactFilename": "TEST_ARTIFACT_ADDRESS.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/mbox-urlcontains"
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/mbox-urlcontains",
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_mbox-url-parsing"
       ]
     },
     {
@@ -30,11 +31,12 @@
       ]
     },
     {
-      "activityIds": [125874],
+      "activityIds": [125874, 147386],
       "remoteMboxes": [],
       "artifactFilename": "TEST_ARTIFACT_PARAMS.json",
       "adminUrls": [
-        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_mbox-params"
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_mbox-params",
+        "https://experience.adobe.com/#/@targettesting/target/activities/activitydetails/A-B/_unit-test_mbox-params-dots"
       ]
     },
     {
