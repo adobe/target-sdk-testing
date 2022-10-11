@@ -106,7 +106,9 @@ The test artifacts are generated from a real production artifact.  This artifact
 | organizationId | 65453EA95A70434F0A495D34@AdobeOrg |
 | environment    | production                        |
 
-More details about the specific Target Activities and Properties use for testing can be found [here](https://wiki.corp.adobe.com/display/Target/On-device+Decisioning%3A+Test+Artifacts)
+
+More details about the specific Target Activities and Properties use for testing can be found [here](https://wiki.corp.adobe.com/display/Target/On-device+Decisioning%3A+Test+Artifacts) 
+
 
 ### Generating updated test artifacts
 
