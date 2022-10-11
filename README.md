@@ -26,7 +26,7 @@ Follow these steps to establlish the git subtree for the first time.
 
 ## Updating to the latest schema
 
-To update to the latest test schema, simply execute the `updateTestSchema.sh` script at any time.
+To update to the latest test schema, simply execute the `src/updateTestSchema.sh` script at any time.
 
 ```bash
 ./updateTestSchema.sh
@@ -64,7 +64,7 @@ To add additional tests to the suite:
 1. Create a new activity in the `Target Testing` admin [here](https://experience.adobe.com/#/@targettesting/target/activities)
 1. Find the object that contains the `artifactFilename` you wish to update in `src/testArtifacts.json`. Update `activityIds` and `adminUrls` with the activity ID and admin URL of the new activity
 1. Follow the steps [below](#generating-updated-test-artifacts) to update the artifacts located at `src/schema.artifacts` with the new activity
-1. Update the corresponding test model located at `src/schema/models` with the new activity. Specifications for the test models can be found [here](#test-models)
+1. Update the corresponding test model located at `src/schema/models` with the new activity by following [these steps](#updating-to-the-latest-schema). Specifications for the test models can be found [here](#test-models)
 1. Update the [On-device decisioning test artifact wiki](https://wiki.corp.adobe.com/display/Target/On-device+Decisioning%3A+Test+Artifacts) to include the new activity created in the appropriate table with details.
 
 ### Test Models
@@ -102,8 +102,8 @@ The test artifacts are generated from a real production artifact.  This artifact
 
 | Property       | Value                  			     |
 |----------------|-----------------------------------|
-| clientId       | adobesummit2018                   |
-| organizationId | 65453EA95A70434F0A495D34@AdobeOrg |
+| clientId       | targettesting                     |
+| organizationId | 74F652E95F1B16FE0A495C92@AdobeOrg |
 | environment    | production                        |
 
 
