@@ -63,7 +63,7 @@ To see a working example check out the [Node.js test runner](https://github.com/
 To add additional tests to the suite:
 1. Create a new activity in the `Target Testing` admin [here](https://experience.adobe.com/#/@targettesting/target/activities)
 1. Find the object that contains the `artifactFilename` you wish to update in `src/testArtifacts.json`. Update `activityIds` and `adminUrls` with the activity ID and admin URL of the new activity
-1. Follow the steps [below](#Generating-updated-test-artifacts) to update the artifacts located at `src/schema.artifacts` with the new activity
+1. Follow the steps [below](#generating-updated-test-artifacts) to update the artifacts located at `src/schema.artifacts` with the new activity
 1. Update the corresponding test model located at `src/schema/models` with the new activity. Specifications for the test models can be found [here](#test-models)
 1. Update the [On-device decisioning test artifact wiki](https://wiki.corp.adobe.com/display/Target/On-device+Decisioning%3A+Test+Artifacts) to include the new activity created in the appropriate table with details.
 
@@ -106,7 +106,7 @@ The test artifacts are generated from a real production artifact.  This artifact
 | organizationId | 65453EA95A70434F0A495D34@AdobeOrg |
 | environment    | production                        |
 
-More details about the specific Target Activities and Properties use for testing can be found [here](https://wiki.corp.adobe.com/display/elm/Local+Decisioning%3A+Test+Artifacts)
+More details about the specific Target Activities and Properties use for testing can be found [here](https://wiki.corp.adobe.com/display/Target/On-device+Decisioning%3A+Test+Artifacts)
 
 ### Generating updated test artifacts
 
