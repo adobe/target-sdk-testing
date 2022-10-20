@@ -13,20 +13,20 @@ The test schema files reside within the `schema` folder of this repo.  There are
 
 ## How to use in an SDK
 
-In order to use these test files you need to reference the `schema` folder of this repo within a specific target SDK repo.  This is done via git subtree.  And there is a script for you to use that makes the process very simple.  
+In order to use these test files you need to reference the `schema` folder of this repo within a specific target SDK repo.  This is done via git subtree.  And there is a script for you to use that makes the process very simple.
 
 ## Setup
 
 Follow these steps to establlish the git subtree for the first time.
 
-1. Download the [updateTestSchema.sh](https://raw.githubusercontent.com/adobe/target-sdk-testing/main/src/updateTestSchema.sh) file from this repo into the target SDK.  
+1. Download the [updateTestSchema.sh](https://raw.githubusercontent.com/adobe/target-sdk-testing/main/src/updateTestSchema.sh) file from this repo into the target SDK.
 1. Edit `updateTestSchema.sh` and change the `TEST_SCHEMA_DESTINATION_FOLDER` variable to the path for where you want the `schema` folder to live within the target SDK repo.
 1. Set file permissions to execute: `chmod +x updateTestSchema.sh`
 1. Execute the script from the repo root folder: `./updateTestSchema.sh`
 
 ## Updating to the latest schema
 
-To update to the latest test schema, simply execute the `updateTestSchema.sh` script at any time.
+To update to the latest test schema, simply execute the `src/updateTestSchema.sh` script at any time.
 
 ```bash
 ./updateTestSchema.sh
@@ -34,7 +34,7 @@ To update to the latest test schema, simply execute the `updateTestSchema.sh` sc
 
 ## Usage
 
-To use the schema, you will need to create a test that reads the test suite files, and dynamically instruments tests based on the definitions.   
+To use the schema, you will need to create a test that reads the test suite files, and dynamically instruments tests based on the definitions.
 
 ### Read the test suites and hydrate the artifacts
 
@@ -57,6 +57,15 @@ For each test suite file...
    * If `notificationOutput` is specified within the test, validate that a notification was sent and that it contains the keys and values specified within `notificationOutput`.  If `notificationOutput` is null, verify that no notifications were sent.
 
 To see a working example check out the [Node.js test runner](https://github.com/adobe/target-nodejs-sdk/blob/main/packages/target-decisioning-engine/test/decisioning.spec.js)
+
+### Adding Additional Tests
+
+To add additional tests to the suite:
+1. Create a new activity in the `Target Testing` admin [here](https://experience.adobe.com/#/@targettesting/target/activities)
+1. Find the object that contains the `artifactFilename` you wish to update in `src/testArtifacts.json`. Update `activityIds` and `adminUrls` with the activity ID and admin URL of the new activity
+1. Follow the steps [below](#generating-updated-test-artifacts) to update the artifacts located at `src/schema.artifacts` with the new activity
+1. Update the corresponding test model located at `src/schema/models` with the new activity by following [these steps](#updating-to-the-latest-schema). Specifications for the test models can be found [here](#test-models)
+1. Update the [On-device decisioning test artifact wiki](https://wiki.corp.adobe.com/display/Target/On-device+Decisioning%3A+Test+Artifacts) to include the new activity created in the appropriate table with details.
 
 ### Test Models
 
@@ -93,11 +102,13 @@ The test artifacts are generated from a real production artifact.  This artifact
 
 | Property       | Value                  			     |
 |----------------|-----------------------------------|
-| clientId       | adobesummit2018                   |
-| organizationId | 65453EA95A70434F0A495D34@AdobeOrg |
+| clientId       | targettesting                     |
+| organizationId | 74F652E95F1B16FE0A495C92@AdobeOrg |
 | environment    | production                        |
 
+
 More details about the specific Target Activities and Properties use for testing can be found [here](https://wiki.corp.adobe.com/display/Target/On-device+Decisioning%3A+Test+Artifacts) 
+
 
 ### Generating updated test artifacts
 
